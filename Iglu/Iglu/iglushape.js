@@ -115,10 +115,111 @@ function Iglushape(gl, edges, color) {
 
         normalVectors.push(0.0, 1.0, 0.0);
 
+
+        // inners from left to right
+        addEntryVerticesRoof(0.0, 9, radStep, vertices);
+        addEntryVerticesRoof(0.2, 9, radStep, vertices);
+        addEntryVerticesRoof(0.4, 9, radStep, vertices);
+        addEntryVerticesRoof(0.6, 9, radStep, vertices);
+        addEntryVerticesRoof(0.67, 8.9, radStep, vertices);
+        addEntryVerticesRoof(0.74, 8.7, radStep, vertices);
+        addEntryVerticesRoof(0.78, 8.4, radStep, vertices);
+        addEntryVerticesRoof(0.8, 8, radStep, vertices);
+        addEntryVerticesRoof(0.78, 7.6, radStep, vertices);
+        addEntryVerticesRoof(0.74, 7.3, radStep, vertices);
+        addEntryVerticesRoof(0.67, 7.1, radStep, vertices);
+        addEntryVerticesRoof(0.6, 7, radStep, vertices);
+        addEntryVerticesRoof(0.4, 7, radStep, vertices);
+        addEntryVerticesRoof(0.2, 7, radStep, vertices);
+        addEntryVerticesRoof(0.0, 7, radStep, vertices);
+
+        // outers from left to right
+        addEntryVerticesRoof(0.0, 10, radStep, vertices);
+        addEntryVerticesRoof(0.2, 10, radStep, vertices);
+        addEntryVerticesRoof(0.4, 10, radStep, vertices);
+        addEntryVerticesRoof(0.6, 10, radStep, vertices);
+        addEntryVerticesRoof(0.72, 9.8, radStep, vertices);
+        addEntryVerticesRoof(0.89, 9.5, radStep, vertices);
+        addEntryVerticesRoof(0.96, 9, radStep, vertices);
+        addEntryVerticesRoof(1, 8, radStep, vertices);
+        addEntryVerticesRoof(0.96, 7, radStep, vertices);
+        addEntryVerticesRoof(0.89, 6.5, radStep, vertices);
+        addEntryVerticesRoof(0.72, 6.2, radStep, vertices);
+        addEntryVerticesRoof(0.6, 6, radStep, vertices);
+        addEntryVerticesRoof(0.4, 6, radStep, vertices);
+        addEntryVerticesRoof(0.2, 6, radStep, vertices);
+        addEntryVerticesRoof(0.0, 6, radStep, vertices);
+
+        addEntryVerticesFront(0.0, 9, radStep, vertices);
+        addEntryVerticesFront(0.2, 9, radStep, vertices);
+        addEntryVerticesFront(0.4, 9, radStep, vertices);
+        addEntryVerticesFront(0.6, 9, radStep, vertices);
+        addEntryVerticesFront(0.67, 8.9, radStep, vertices);
+        addEntryVerticesFront(0.74, 8.7, radStep, vertices);
+        addEntryVerticesFront(0.78, 8.4, radStep, vertices);
+        addEntryVerticesFront(0.8, 8, radStep, vertices);
+        addEntryVerticesFront(0.78, 7.6, radStep, vertices);
+        addEntryVerticesFront(0.74, 7.3, radStep, vertices);
+        addEntryVerticesFront(0.67, 7.1, radStep, vertices);
+        addEntryVerticesFront(0.6, 7, radStep, vertices);
+        addEntryVerticesFront(0.4, 7, radStep, vertices);
+        addEntryVerticesFront(0.2, 7, radStep, vertices);
+        addEntryVerticesFront(0.0, 7, radStep, vertices);
+
+        // outers from left to right
+        addEntryVerticesFront(0.0, 10, radStep, vertices);
+        addEntryVerticesFront(0.2, 10, radStep, vertices);
+        addEntryVerticesFront(0.4, 10, radStep, vertices);
+        addEntryVerticesFront(0.6, 10, radStep, vertices);
+        addEntryVerticesFront(0.72, 9.8, radStep, vertices);
+        addEntryVerticesFront(0.89, 9.5, radStep, vertices);
+        addEntryVerticesFront(0.96, 9, radStep, vertices);
+        addEntryVerticesFront(1, 8, radStep, vertices);
+        addEntryVerticesFront(0.96, 7, radStep, vertices);
+        addEntryVerticesFront(0.89, 6.5, radStep, vertices);
+        addEntryVerticesFront(0.72, 6.2, radStep, vertices);
+        addEntryVerticesFront(0.6, 6, radStep, vertices);
+        addEntryVerticesFront(0.4, 6, radStep, vertices);
+        addEntryVerticesFront(0.2, 6, radStep, vertices);
+        addEntryVerticesFront(0.0, 6, radStep, vertices);
+
+        console.log(vertices);
+
         var buffer  = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
         return buffer;
+    }
+
+    function addEntryVerticesRoof(height, edge, radStep, vertices){
+        var roundingHeight = calculateRounding(gl, height, 2);
+        var x_Value = calculateX(gl, roundingHeight, radStep * edge, edge);
+        var z_Value = height;
+        var y_Value = calculateY(gl, roundingHeight, radStep * edge, edge);
+        addVertice(vertices, x_Value, z_Value, y_Value);
+        addVertice(vertices, x_Value, z_Value, y_Value - 0.5);
+        addVertice(vertices, x_Value, z_Value, y_Value - 1);
+    }
+
+    function addEntryVerticesFront(height, edge, radStep, vertices){
+        var roundingHeight = calculateRounding(gl, height, 2);
+        var x_Value = calculateX(gl, roundingHeight, radStep * edge, edge);
+        var z_Value = height;
+        var y_Value = calculateY(gl, roundingHeight, radStep * edge, edge);
+        addVertice(vertices, x_Value, z_Value, y_Value - 1);
+    }
+
+    function addVertice(vertices, x, z, y){
+        vertices.push(x);
+        vertices.push(z);
+        vertices.push(y);
+
+        var vec = vec3.create();
+        vec3.normalize(vec, [x, z, y]);
+
+        normalVectors.push(vec[0]);
+        normalVectors.push(vec[1]);
+        normalVectors.push(vec[2]);
     }
 
     function calculateRounding(gl, height, fullHeight){
@@ -146,7 +247,7 @@ function Iglushape(gl, edges, color) {
         // define the edges for the cube, there are 12 edges in a cube
         var vertexIndices = [];
         var counter = 0;
-        for (var x = 0; x < maxHeight; x = x + heightDifference){
+        for (var x = 0; counter < 20; x = x + (heightDifference * 2)){
             var z = counter * edges;
             for (var y = 0; y < edges; y++){
                 vertexIndices.push(y + z);
@@ -156,15 +257,86 @@ function Iglushape(gl, edges, color) {
                 else{
                     vertexIndices.push(y + 1 + z);
                 }
+
+                if(counter < 18){
+                    if(counter % 4 == 0){
+                        if(y % 2 == 0){
+                            vertexIndices.push(y + z);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(y + z + edges * 2);
+                        }
+                    }
+                    else{
+                        if(y % 2 != 0){
+                            vertexIndices.push(y + z);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(y + z + edges * 2);
+                        }
+                    }
+                }
+                else{
+                    if(counter % 4 == 0){
+                        if(y % 2 == 0){
+                            console.log("test");
+                            vertexIndices.push(y + z);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(edges * (maxHeight / heightDifference));
+                        }
+                    }
+                    else{
+                        if(y % 2 != 0){
+                            console.log("test");
+                            vertexIndices.push(y + z);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(y + z + edges);
+                            vertexIndices.push(edges * (maxHeight / heightDifference));
+                        }
+                    }
+                }
             }
 
-            counter++;
+            edges * (maxHeight / heightDifference)
+
+            counter = counter + 2;
         }
+
+
+        var offset = edges * (maxHeight / heightDifference);
+
+        // entry lines
+        for (var x = 0; x < 30; x++){
+            edgeEntryTop(offset + 1 + (x*3), vertexIndices);
+        }
+
+        for (var x = 0; x < 14; x++){
+            entryFrontLine(offset + 3 + (x*3), vertexIndices);
+        }
+
+        for (var x = 0; x < 14; x++){
+            entryFrontLine(offset + 45 + 3 + (x*3), vertexIndices);
+        }
+
+        console.log(vertexIndices);
 
         var buffer = gl.createBuffer();
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(vertexIndices), gl.STATIC_DRAW);
         return buffer;
+    }
+
+    function entryFrontLine(offset, vertexIndices){
+        vertexIndices.push(offset);
+        vertexIndices.push(offset + 3);
+    }
+
+    function edgeEntryTop(offset, vertexIndices){
+        vertexIndices.push(offset);
+        vertexIndices.push(offset + 1);
+        vertexIndices.push(offset + 1);
+        vertexIndices.push(offset + 2);
     }
 
     function defineSides(gl){
@@ -200,11 +372,56 @@ function Iglushape(gl, edges, color) {
             counter++;
         }
 
+
+        var offset = edges * (maxHeight / heightDifference);
+
+        for (var x = 0; x < 14; x++){
+            addEntryWall(offset + 1 + (x*3), vertexIndices);
+        }
+
+        for (var x = 0; x < 14; x++){
+            addEntryWall(offset + 46 + (x*3), vertexIndices);
+        }
+
+        for (var x = 0; x < 14; x++){
+            addFrontWall(offset + 3 + (x*3), vertexIndices);
+        }
+
+        console.log(vertexIndices);
+
         var buffer = gl.createBuffer();
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(vertexIndices), gl.STATIC_DRAW);
 
         return buffer;
+    }
+
+    function addFrontWall(offset, vertexIndices){
+        vertexIndices.push(offset);
+        vertexIndices.push(offset + 3);
+        vertexIndices.push(offset + 45);
+
+        vertexIndices.push(offset + 3);
+        vertexIndices.push(offset + 45);
+        vertexIndices.push(offset + 48);
+    }
+
+    function addEntryWall(offset, vertexIndices){
+        vertexIndices.push(offset);
+        vertexIndices.push(offset + 1);
+        vertexIndices.push(offset + 3);
+
+        vertexIndices.push(offset + 1);
+        vertexIndices.push(offset + 3);
+        vertexIndices.push(offset + 4);
+
+        vertexIndices.push(offset + 1);
+        vertexIndices.push(offset + 2);
+        vertexIndices.push(offset + 4);
+
+        vertexIndices.push(offset + 2);
+        vertexIndices.push(offset + 4);
+        vertexIndices.push(offset + 5);
     }
 
     return {
@@ -219,7 +436,7 @@ function Iglushape(gl, edges, color) {
 
                 // set a constant color for all vertices
                 gl.disableVertexAttribArray(aVertexColorId);
-                gl.vertexAttrib3fv(aVertexColorId, this.color);
+                gl.vertexAttrib3fv(aVertexColorId, [0.0, 0.0, 0.0, 1.0]);
 
                 var normalBuffer = gl.createBuffer();
                 gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
@@ -229,15 +446,23 @@ function Iglushape(gl, edges, color) {
                 gl.vertexAttribPointer(aVertexNormalId, 3, gl.FLOAT, false, 0, 0);
                 gl.enableVertexAttribArray(aVertexNormalId);
 
+                var circles = edges * (maxHeight / heightDifference);
+                console.log(circles);
+
                 // bind the element array
                 gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, defineEdges(gl));
-                gl.drawElements(gl.LINES, edges * (maxHeight / heightDifference) * 2,gl.UNSIGNED_SHORT, 0);
+                gl.drawElements(gl.LINES, 1280 + 120 + 28 + 28,gl.UNSIGNED_SHORT, 0);
+                //gl.drawElements(gl.LINES, 1280 + 80 + 28 + 28 + 24,gl.UNSIGNED_SHORT, 0);
 
+            // set a constant color for all vertices
+            gl.disableVertexAttribArray(aVertexColorId);
+            gl.vertexAttrib3fv(aVertexColorId, this.color);
 
-
+            console.log(edges * ((maxHeight / heightDifference) - 1) * 6 + (edges * 3) + 3);
             // bind the element array
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, defineSides(gl));
-            gl.drawElements(gl.TRIANGLES, edges * ((maxHeight / heightDifference) - 1) * 6 + (edges * 3),gl.UNSIGNED_SHORT, 0);
+            gl.drawElements(gl.TRIANGLES, edges * ((maxHeight / heightDifference) - 1) * 6 + (edges * 3) + 336 + 84,gl.UNSIGNED_SHORT, 0);
+            //gl.drawElements(gl.TRIANGLES, edges * ((maxHeight / heightDifference) - 1) * 6 + (edges * 3) + 144,gl.UNSIGNED_SHORT, 0);
         }
     }
 }

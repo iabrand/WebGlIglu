@@ -69,82 +69,71 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1743801124">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+          <entry key="js" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="JavaScript" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="3538" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="3538" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Iglu/ProjectIglu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1632">
+              <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/startExercise6/ProjectIglu.html">
+        <entry file="file://$PROJECT_DIR$/Iglu/iglushape.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="366">
+              <caret line="319" column="9" lean-forward="true" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/startExercise6/ProjectIglu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-110">
-              <caret line="119" selection-start-line="119" selection-end-line="119" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/startExercise6/shaderUtils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/startExercise6/gl-matrix.js">
+        <entry file="file://$PROJECT_DIR$/Iglu/gl-matrix.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/startExercise6/VertexShader.glsl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="15" column="72" lean-forward="true" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/startExercise6/webgl-debug.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/startExercise6/iglushape.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="238" column="68" lean-forward="true" selection-start-line="238" selection-start-column="68" selection-end-line="238" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/startExercise6/FragmentShaderLighting.glsl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/Iglu/ProjectIglu.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -158,6 +147,9 @@
       <find>-0.5, -0.5, 0.5,</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -169,6 +161,8 @@
         <option value="$PROJECT_DIR$/startExercise6/iglushape.js" />
         <option value="$PROJECT_DIR$/startExercise6/Exercise6.html" />
         <option value="$PROJECT_DIR$/startExercise6/ProjectIglu.html" />
+        <option value="$PROJECT_DIR$/Iglu/ProjectIglu.js" />
+        <option value="$PROJECT_DIR$/Iglu/iglushape.js" />
       </list>
     </option>
   </component>
@@ -179,37 +173,33 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
+    <option name="x" value="950" />
     <option name="width" value="978" />
-    <option name="height" value="1039" />
+    <option name="height" value="1038" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="startExercise6 - Copy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="startExercise6 - Copy" type="462c0819:PsiDirectoryNode" />
+              <item name="Iglu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Iglu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="startExercise6 - Copy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="startExercise6 - Copy" type="462c0819:PsiDirectoryNode" />
-              <item name="__MACOSX" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="startExercise6 - Copy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="startExercise6 - Copy" type="462c0819:PsiDirectoryNode" />
-              <item name="startExercise6" type="462c0819:PsiDirectoryNode" />
+              <item name="Iglu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Iglu" type="462c0819:PsiDirectoryNode" />
+              <item name="Iglu" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -231,11 +221,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.ProjectIglu.html (1)">
     <configuration name="Exercise6.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/startExercise6/startExercise6/Exercise6.html">
       <method v="2" />
     </configuration>
+    <configuration name="ProjectIglu.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Iglu/Iglu/ProjectIglu.html">
+      <method v="2" />
+    </configuration>
     <configuration name="ProjectIglu.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/startExercise6 - Copy/startExercise6/ProjectIglu.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="iglushape.js (1)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="iglushape.js" working-dir="$PROJECT_DIR$/Iglu">
       <method v="2" />
     </configuration>
     <configuration name="iglushape.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/startExercise6/iglushape.js" working-dir="$PROJECT_DIR$/startExercise6">
@@ -245,9 +241,13 @@
       <item itemvalue="JavaScript Debug.Exercise6.html" />
       <item itemvalue="Node.js.iglushape.js" />
       <item itemvalue="JavaScript Debug.ProjectIglu.html" />
+      <item itemvalue="JavaScript Debug.ProjectIglu.html (1)" />
+      <item itemvalue="Node.js.iglushape.js (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.ProjectIglu.html (1)" />
+        <item itemvalue="Node.js.iglushape.js (1)" />
         <item itemvalue="JavaScript Debug.ProjectIglu.html" />
         <item itemvalue="JavaScript Debug.Exercise6.html" />
         <item itemvalue="Node.js.iglushape.js" />
@@ -267,11 +267,14 @@
       <workItem from="1542988905434" duration="13945000" />
       <workItem from="1543491570719" duration="7898000" />
       <workItem from="1543507549618" duration="31287000" />
+      <workItem from="1544351678773" duration="6918000" />
+      <workItem from="1544703220803" duration="10657000" />
+      <workItem from="1544769318646" duration="17346000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53130000" />
+    <option name="totallyTimeSpent" value="88051000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -303,79 +306,37 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/startExercise6/lena512.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/shaderUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/gl-matrix.js">
+    <entry file="file://$PROJECT_DIR$/startExercise6/lena512.png" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/shaderUtils.js" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/gl-matrix.js" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/solidSphere.js" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/webgl-debug.js" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/solidCube.js" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/VertexShader.glsl" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/FragmentShaderLighting.glsl" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/ProjectIglu.js" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/iglushape.js" />
+    <entry file="file://$PROJECT_DIR$/startExercise6/ProjectIglu.html" />
+    <entry file="file://$PROJECT_DIR$/Iglu/gl-matrix.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/solidSphere.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="111" selection-end-column="98" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/Iglu/ProjectIglu.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/webgl-debug.js">
+    <entry file="file://$PROJECT_DIR$/Iglu/ProjectIglu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="1632">
+          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/solidCube.js">
+    <entry file="file://$PROJECT_DIR$/Iglu/iglushape.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="145" column="50" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/VertexShader.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="15" column="72" lean-forward="true" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/FragmentShaderLighting.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/ProjectIglu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/iglushape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="238" column="68" lean-forward="true" selection-start-line="238" selection-start-column="68" selection-end-line="238" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startExercise6/ProjectIglu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="366">
+          <caret line="319" column="9" lean-forward="true" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="9" />
         </state>
       </provider>
     </entry>

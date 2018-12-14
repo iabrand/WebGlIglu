@@ -32,7 +32,7 @@ var ctx = {
 
 // parameters that define the scene
 var scene = {
-    eyePosition: [0, 4, -5],
+    eyePosition: [0.6, 1, -8],
     lookAtPosition: [0, 0, 0],
     upVector: [0, 1, 0],
     nearPlane: 0.1,
@@ -116,9 +116,6 @@ function draw() {
     mat4.perspective(projectionMatrix, glMatrix.toRadian(40), gl.drawingBufferWidth / gl.drawingBufferHeight, scene.nearPlane, scene.farPlane);
     //mat4.ortho(projectionMatrix, -2.0, 2.0, -2.0, 2.0, scene.nearPlane, scene.farPlane);
 
-
-
-
     // set the light
     gl.uniform1i(ctx.uEnableLightingId, 1);
     gl.uniform3fv(ctx.uLightPositionId, scene.lightPosition);
@@ -130,6 +127,7 @@ function draw() {
 
     // translate and rotate objects
     mat4.translate(modelViewMatrix, viewMatrix, [0.0, -1.0, 0.0]);
+    mat4.rotate(modelViewMatrix, modelViewMatrix, scene.angle, [0, 1, 0]);
     gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
     mat3.normalFromMat4(normalMatrix, modelViewMatrix);
     gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
