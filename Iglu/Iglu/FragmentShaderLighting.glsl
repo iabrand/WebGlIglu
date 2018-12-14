@@ -11,6 +11,8 @@ uniform sampler2D uSampler;
 
 varying vec3 vNormalEye;
 varying vec3 vVertexPositionEye3;
+// the texCoords passed in from the vertex shader.
+varying vec2 v_texCoord;
 
 const float ambientFactor = 0.2;
 const float shininess = 10.0;
@@ -18,6 +20,8 @@ const vec3 specularMaterialColor = vec3(0.2, 0.2, 0.2);
 
 void main() {
     vec3 baseColor = vColor;
+
+    gl_FragColor = texture2D(uSampler, v_texCoord);
 
     if (uEnableLighting) {
         gl_FragColor = vec4(baseColor, 1.0);

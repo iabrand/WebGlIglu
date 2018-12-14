@@ -27,12 +27,13 @@ var ctx = {
     uSamplerId: -1,
     uLightPositionId: -1,
     uLightColorId: -1,
-    uEnableLightingId: -1
+    uEnableLightingId: -1,
+    aVertexTextureId: -1,
 };
 
 // parameters that define the scene
 var scene = {
-    eyePosition: [0.6, 1, -8],
+    eyePosition: [0.6, 1, -12],
     lookAtPosition: [0, 0, 0],
     upVector: [0, 1, 0],
     nearPlane: 0.1,
@@ -47,7 +48,9 @@ var scene = {
 
 // defined object
 var drawingObjects = {
-    iglu: null
+    iglu: null,
+    sky: null,
+    bottom: null,
 };
 
 /**
@@ -58,7 +61,8 @@ function startup() {
     var canvas = document.getElementById("myCanvas");
     gl = createGLContext(canvas);
     initGL();
-    window.requestAnimationFrame (drawAnimated);
+    //window.requestAnimationFrame (drawAnimated);
+    draw();
 }
 
 /**
@@ -76,6 +80,8 @@ function initGL() {
 
 function defineObjects() {
     drawingObjects.iglu = new Iglushape(gl, 32, [0.7, 0.7, 0.7]);
+    drawingObjects.sky = new Sky(gl, -20, -5, 40, 40);
+    drawingObjects.bottom = new Bottom(gl, -20,-5,-40,40)
 }
 
 /**
@@ -86,7 +92,7 @@ function setUpAttributesAndUniforms(){
     ctx.aVertexPositionId = gl.getAttribLocation(ctx.shaderProgram, "aVertexPosition");
     ctx.aVertexColorId = gl.getAttribLocation(ctx.shaderProgram, "aVertexColor");
     ctx.aVertexNormalId = gl.getAttribLocation(ctx.shaderProgram, "aVertexNormal");
-
+    ctx.aVertexTextureId = gl.getAttribLocation(ctx.shaderProgram, "a_texCoord");
     ctx.uModelViewMatrixId = gl.getUniformLocation(ctx.shaderProgram, "uModelViewMatrix");
     ctx.uProjectionMatrixId = gl.getUniformLocation(ctx.shaderProgram, "uProjectionMatrix");
     ctx.uNormalMatrixId = gl.getUniformLocation(ctx.shaderProgram, "uNormalMatrix");
@@ -124,10 +130,31 @@ function draw() {
     // same projection matrix for all drawings, so it can be specified here
     gl.uniformMatrix4fv(ctx.uProjectionMatrixId, false, projectionMatrix);
 
+    // translate and rotate objects
+    mat4.translate(modelViewMatrix, viewMatrix, [0.0, 4.0, 17.0]);
+    gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
+    mat3.normalFromMat4(normalMatrix, modelViewMatrix);
+    gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
+    drawingObjects.sky.draw(gl, ctx.aVertexPositionId, ctx.aVertexColorId, ctx.aVertexNormalId, ctx.aVertexTextureCoordId)
 
     // translate and rotate objects
-    mat4.translate(modelViewMatrix, viewMatrix, [0.0, -1.0, 0.0]);
-    mat4.rotate(modelViewMatrix, modelViewMatrix, scene.angle, [0, 1, 0]);
+    mat4.translate(modelViewMatrix, viewMatrix, [0.0, 4.0, 17.0]);
+    gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
+    mat3.normalFromMat4(normalMatrix, modelViewMatrix);
+    gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
+    drawingObjects.bottom.draw(gl, ctx.aVertexPositionId, ctx.aVertexColorId, ctx.aVertexNormalId, ctx.aVertexTextureCoordId)
+
+    // translate and rotate objects
+    mat4.translate(modelViewMatrix, viewMatrix, [-1.5, -1.0, 0.0]);
+    mat4.rotate(modelViewMatrix, modelViewMatrix, 0.4, [0, 1, 0]);
+    gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
+    mat3.normalFromMat4(normalMatrix, modelViewMatrix);
+    gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
+    drawingObjects.iglu.draw(gl, ctx.aVertexPositionId, ctx.aVertexColorId, ctx.aVertexNormalId);
+
+    // translate and rotate objects
+    mat4.translate(modelViewMatrix, viewMatrix, [3.0, -1.0, 3.0]);
+    mat4.rotate(modelViewMatrix, modelViewMatrix, -0.2, [0, 1, 0]);
     gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
     mat3.normalFromMat4(normalMatrix, modelViewMatrix);
     gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
