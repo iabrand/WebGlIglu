@@ -15,6 +15,8 @@ window.onload = startup;
 // the gl object is saved globally
 var gl;
 
+var texture= null;
+
 // all parameters associated with the shader program
 var ctx = {
     shaderProgram: -1,
@@ -28,6 +30,7 @@ var ctx = {
     uLightPositionId: -1,
     uLightColorId: -1,
     uEnableLightingId: -1,
+    uEnableTextureId: -1,
     aVertexTextureId: -1,
 };
 
@@ -53,6 +56,17 @@ var drawingObjects = {
     bottom: null,
 };
 
+var textures =
+    {
+        textureObj: {}
+    };
+
+var images=
+    [
+        "",
+        "snow.jpg",
+    ]
+
 /**
  * Startup function to be called when the body is loaded
  */
@@ -62,6 +76,7 @@ function startup() {
     gl = createGLContext(canvas);
     initGL();
     //window.requestAnimationFrame (drawAnimated);
+    loadTexture();
     draw();
 }
 
@@ -92,7 +107,7 @@ function setUpAttributesAndUniforms(){
     ctx.aVertexPositionId = gl.getAttribLocation(ctx.shaderProgram, "aVertexPosition");
     ctx.aVertexColorId = gl.getAttribLocation(ctx.shaderProgram, "aVertexColor");
     ctx.aVertexNormalId = gl.getAttribLocation(ctx.shaderProgram, "aVertexNormal");
-    ctx.aVertexTextureId = gl.getAttribLocation(ctx.shaderProgram, "a_texCoord");
+    ctx.aVertexTextureId = gl.getAttribLocation(ctx.shaderProgram, "aTextureCoord");
     ctx.uModelViewMatrixId = gl.getUniformLocation(ctx.shaderProgram, "uModelViewMatrix");
     ctx.uProjectionMatrixId = gl.getUniformLocation(ctx.shaderProgram, "uProjectionMatrix");
     ctx.uNormalMatrixId = gl.getUniformLocation(ctx.shaderProgram, "uNormalMatrix");
@@ -102,8 +117,49 @@ function setUpAttributesAndUniforms(){
     ctx.uLightPositionId = gl.getUniformLocation(ctx.shaderProgram, "uLightPosition");
     ctx.uLightColorId = gl.getUniformLocation(ctx.shaderProgram, "uLightColor");
     ctx.uEnableLightingId = gl.getUniformLocation(ctx.shaderProgram, "uEnableLighting");
+    ctx.uEnableTextureId = gl.getUniformLocation(ctx.shaderProgram, "uEnableTexture");
 }
 
+/**
+ * Initialize a texture from an image
+ * @param image the loaded image
+ * @param textureObject WebGL Texture Object
+ */
+function initTexture ( image , textureObject ) {
+    // create a new texture
+    gl.bindTexture(gl.TEXTURE_2D , textureObject );
+
+    // set parameters for the texture
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL , true );
+    gl.texImage2D(gl.TEXTURE_2D , 0, gl.RGBA , gl.RGBA , gl.UNSIGNED_BYTE , image );
+    gl.texParameteri(gl.TEXTURE_2D , gl.TEXTURE_MAG_FILTER , gl.LINEAR );
+    gl.texParameteri(gl.TEXTURE_2D , gl.TEXTURE_MIN_FILTER , gl.LINEAR_MIPMAP_NEAREST );
+    gl.generateMipmap(gl.TEXTURE_2D );
+
+    // turn texture off again
+    gl.bindTexture(gl.TEXTURE_2D , null );
+}
+
+/**
+ * Load an image as a texture
+ */
+function loadTexture (counter) {
+    var image = new Image();
+    // create a texture object
+    textures.textureObj = gl.createTexture();
+    //gl.bindTexture(gl.TEXTURE_2D, textures.textureObj);
+    //gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
+     //   new Uint8Array([0, 0, 255, 255]));
+    image.onload = function() {
+        initTexture( image , textures.textureObj);
+        // make sure there is a redraw after the loading of the texture
+        draw();
+    };
+    // setting the src will trigger onload
+    //image.src = "letitsnow.png";
+    //image.src = "fallingSnow.jpg";
+    image.src = "snow.jpg"
+}
 /**
  * Draw the scene.
  */
@@ -118,12 +174,10 @@ function draw() {
 
     // set the matrices from the scene
     mat4.lookAt(viewMatrix, scene.eyePosition, scene.lookAtPosition, scene.upVector);
-
     mat4.perspective(projectionMatrix, glMatrix.toRadian(40), gl.drawingBufferWidth / gl.drawingBufferHeight, scene.nearPlane, scene.farPlane);
-    //mat4.ortho(projectionMatrix, -2.0, 2.0, -2.0, 2.0, scene.nearPlane, scene.farPlane);
 
     // set the light
-    gl.uniform1i(ctx.uEnableLightingId, 1);
+    gl.uniform1i(ctx.uEnableLightingId, 0);
     gl.uniform3fv(ctx.uLightPositionId, scene.lightPosition);
     gl.uniform3fv(ctx.uLightColorId, scene.lightColor);
 
@@ -135,15 +189,22 @@ function draw() {
     gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
     mat3.normalFromMat4(normalMatrix, modelViewMatrix);
     gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
-    drawingObjects.sky.draw(gl, ctx.aVertexPositionId, ctx.aVertexColorId, ctx.aVertexNormalId, ctx.aVertexTextureCoordId)
+    drawingObjects.sky.draw(gl, ctx.aVertexPositionId, ctx.aVertexColorId, ctx.aVertexNormalId, ctx.aVertexTextureId)
 
+    gl.uniform1i(ctx.uEnableTextureId, 1);
+
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, textures.textureObj);
+    gl.uniform1i(ctx.uSamplerId,0);
     // translate and rotate objects
     mat4.translate(modelViewMatrix, viewMatrix, [0.0, 4.0, 17.0]);
     gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
     mat3.normalFromMat4(normalMatrix, modelViewMatrix);
     gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
-    drawingObjects.bottom.draw(gl, ctx.aVertexPositionId, ctx.aVertexColorId, ctx.aVertexNormalId, ctx.aVertexTextureCoordId)
+    drawingObjects.bottom.draw(gl, ctx.aVertexPositionId, ctx.aVertexColorId, ctx.aVertexNormalId, ctx.aVertexTextureId)
 
+    gl.uniform1i(ctx.uEnableTextureId, 0);
+    gl.uniform1i(ctx.uEnableLightingId, 1);
     // translate and rotate objects
     mat4.translate(modelViewMatrix, viewMatrix, [-1.5, -1.0, 0.0]);
     mat4.rotate(modelViewMatrix, modelViewMatrix, 0.4, [0, 1, 0]);

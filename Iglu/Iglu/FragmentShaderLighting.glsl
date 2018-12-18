@@ -3,6 +3,7 @@ precision mediump float;
 varying vec3 vColor;
 
 uniform bool uEnableLighting;
+uniform bool uEnableTexture;
 
 uniform vec3 uLightPosition;
 uniform vec3 uLightColor;
@@ -12,7 +13,7 @@ uniform sampler2D uSampler;
 varying vec3 vNormalEye;
 varying vec3 vVertexPositionEye3;
 // the texCoords passed in from the vertex shader.
-varying vec2 v_texCoord;
+varying vec2 vTextureCoord;
 
 const float ambientFactor = 0.2;
 const float shininess = 10.0;
@@ -21,9 +22,13 @@ const vec3 specularMaterialColor = vec3(0.2, 0.2, 0.2);
 void main() {
     vec3 baseColor = vColor;
 
-    gl_FragColor = texture2D(uSampler, v_texCoord);
+    if (uEnableTexture) {
+            baseColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t)).rgb;
+
+    }
 
     if (uEnableLighting) {
+
         gl_FragColor = vec4(baseColor, 1.0);
         // calculate light direction as seen from the vertex position
         vec3 lightDirectionEye = normalize(uLightPosition - vVertexPositionEye3);
