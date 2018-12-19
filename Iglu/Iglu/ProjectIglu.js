@@ -207,7 +207,7 @@ function draw() {
     gl.uniform1i(ctx.uEnableLightingId, 1);
     // translate and rotate objects
     mat4.translate(modelViewMatrix, viewMatrix, [-1.5, -1.0, 0.0]);
-    mat4.rotate(modelViewMatrix, modelViewMatrix, 0.4, [0, 1, 0]);
+    mat4.rotate(modelViewMatrix, modelViewMatrix, 0.6, [0, 1, 0]);
     gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
     mat3.normalFromMat4(normalMatrix, modelViewMatrix);
     gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
@@ -215,7 +215,7 @@ function draw() {
 
     // translate and rotate objects
     mat4.translate(modelViewMatrix, viewMatrix, [3.0, -1.0, 3.0]);
-    mat4.rotate(modelViewMatrix, modelViewMatrix, -0.2, [0, 1, 0]);
+    mat4.rotate(modelViewMatrix, modelViewMatrix, -0.4, [0, 1, 0]);
     gl.uniformMatrix4fv(ctx.uModelViewMatrixId, false, modelViewMatrix);
     mat3.normalFromMat4(normalMatrix, modelViewMatrix);
     gl.uniformMatrix3fv(ctx.uNormalMatrixId, false, normalMatrix);
