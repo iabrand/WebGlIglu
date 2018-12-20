@@ -41,6 +41,7 @@ function Bottom(gl, x, y, z, width) {
             0.0, 0.0,  0.0,
             1.0, 1.0,  0.0,
             0.0, 1.0,  1.0,
+
             0.0, 0.0,  1.0,
             1.0, 0.0,  0.0,
             1.0, 1.0,  1.0
@@ -51,37 +52,6 @@ function Bottom(gl, x, y, z, width) {
         gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
         return buffer;
-    }
-
-    function loadTexture(gl)
-    {
-        // Create a texture.
-        textures.textureObj = gl.createTexture();
-        gl.bindTexture(gl.TEXTURE_2D, textures.textureObj);
-
-        // Fill the texture with a 1x1 blue pixel.
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
-            new Uint8Array([0, 0, 255, 255]));
-
-        // Asynchronously load an image
-        var image = new Image();
-
-        image.onload = function() {
-            // Now that the image has loaded make copy it to the texture.
-            gl.bindTexture(gl.TEXTURE_2D, textures.textureObj);
-
-            // set parameters for the texture
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST);
-            gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-
-            //gl.generateMipmap(gl.TEXTURE_2D);
-
-            // turn texture off again
-            gl.bindTexture(gl.TEXTURE_2D, null);
-        };
-        image.src = "lena512.png";
     }
 
     return {
@@ -103,7 +73,4 @@ function Bottom(gl, x, y, z, width) {
 
         }
     }
-
-
-
 }

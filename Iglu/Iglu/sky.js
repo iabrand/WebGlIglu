@@ -21,33 +21,6 @@ function Sky(gl, x, y, width, height) {
         return buffer;
     }
 
-
-    function defineTexture(gl)
-    {
-        var x1 = x;
-        var x2 = x + width;
-        var y1 = y;
-        var y2 = y + height;
-
-        var vertices = [
-            0.0,  0.0,
-            1.0,  0.0,
-            0.0,  1.0,
-            0.0,  1.0,
-            1.0,  0.0,
-            1.0,  1.0
-        ];
-
-        // Create a buffer for texcoords.
-        var buffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-        return buffer;
-    }
-
-
-
-
     return {
         draw: function(gl, aVertexPositionId, aVertexColorId, aVertexNormalId, aVertexTextureCoordId) {
 

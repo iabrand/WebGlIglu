@@ -17,7 +17,7 @@ varying vec2 vTextureCoord;
 
 const float ambientFactor = 0.2;
 const float shininess = 1.0;
-const vec3 specularMaterialColor = vec3(0.2, 0.2, 0.2);
+const vec3 specularMaterialColor = vec3(0.1, 0.1, 0.1);
 
 void main() {
     vec3 baseColor = vColor;

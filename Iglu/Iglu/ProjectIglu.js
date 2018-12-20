@@ -61,12 +61,6 @@ var textures =
         textureObj: {}
     };
 
-var images=
-    [
-        "",
-        "snow.jpg",
-    ]
-
 /**
  * Startup function to be called when the body is loaded
  */
